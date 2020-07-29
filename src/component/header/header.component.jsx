@@ -7,7 +7,7 @@ import {connect} from 'react-redux';
 import CartIcon from '../cart-icon/cart-icon.component';
 import Cart from '../cart/cart.component';
 
-const Header = ({currentUser, hidden}) => (
+const Header = ({user, hidden}) => (
     <div className='header'>
         <Link to="/" className='logo-container'>
             <Logo className='logo' />
@@ -16,7 +16,7 @@ const Header = ({currentUser, hidden}) => (
             <Link to='/shop' className='option'>SHOP</Link>
             <Link to='/shop' className='option'>CONTACT</Link>
             {
-                currentUser ?
+                user ?
                 <div className='option' onClick={() => auth.signOut()}>SIGN OUT</div>
                 :
                 <Link to='/signin' className='option'>SIGN IN</Link>
@@ -34,7 +34,7 @@ const Header = ({currentUser, hidden}) => (
 );
 
 const mapStateToProps = ({user:{user}, cart:{hidden}}) =>({
-    currentUser,
+    user,
     hidden
 })
 
